@@ -7,19 +7,22 @@ import Menu from "./Menu";
 const Cabecalho = styled.div`
   width: 100%;
   display: flex;
-
+  height: 75px;
+  background-color: white;
   align-items: center;
   justify-content: space-between;
   padding-left: 10px;
   padding-right: 10px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+
+
   @media screen and (min-width: 700px) {
-  padding-bottom: 30px;
-  padding-top: 30px;
-  box-shadow: 0px 2px #a09f9f4c;
-    }
+    height: 120px;
+    padding-top: 30px;
+    box-shadow: 0px 2px #a09f9f4c;
+    align-items: flex-start;
+  }
   .Logo {
+    margin-top: 10px;
     margin-right: auto;
     display: flex;
     align-items: center;

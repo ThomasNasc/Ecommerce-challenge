@@ -7,6 +7,7 @@ const Menu_Style = styled.div`
   width: 60vw;
   min-width: 200px;
   top: 0;
+  z-index: 2;
   transition: 1s;
   left: ${(props) => (props.toggle ? "-60vw" : "0")};
   height: 100vh;
@@ -16,11 +17,8 @@ const Menu_Style = styled.div`
   color: black;
   font-size: 24px;
   .Option-Menu {
-    padding: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
-    width: 100%;
-
+    padding: 8px;
+    padding-left: 15px;
   }
   @media screen and (min-width: 700px) {
     position: static;
@@ -30,9 +28,16 @@ const Menu_Style = styled.div`
     align-items: center;
     margin-right: auto;
     .Option-Menu {
-      padding: 12px;
+      padding: 5px 10px 50px 10px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      width: 100%;
       width: auto;
-      margin-right: 12px;
+
+      :hover {
+        box-shadow: inset 0px -5px 0px 0px #ff7300;
+      }
     }
   }
 `;
