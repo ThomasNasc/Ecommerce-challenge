@@ -9,8 +9,7 @@ export const Products = {
     Name_Product: "Fall Limited Edition Sneakers",
     Description:
       "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut quae    suscipit facere corporis consequatur ullam alias praesentium pariatur    perspiciatis adipi rspiciatis adipi rspiciatis adipi",
-      discont: 50,
-      value: 250,
-   
+    discont: 50,
+    value: 125,
   },
 };

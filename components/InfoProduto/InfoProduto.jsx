@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
+import { bindActionCreators } from "@reduxjs/toolkit";
+import { connect } from "react-redux";
+import { addCart } from "../../core/redux/actions/cartAction";
+import { Products } from "../../core/Products/productsList";
 const InfoProdutoContainer = styled.div`
   width: 100%;
   padding: 20px;
-  
+
   @media screen and (min-width: 700px) {
     width: 50%;
     padding: 50px;
@@ -69,14 +72,14 @@ const InfoProdutoContainer = styled.div`
       border-radius: 10px;
       height: 50px;
       @media screen and (min-width: 700px) {
-      flex-direction: row;
-      width: 30%;
-      min-width: 100px;
-    }
+        flex-direction: row;
+        width: 30%;
+        min-width: 100px;
+      }
       .buttonSetQtd {
         width: 60px;
         height: 50px;
-      
+
         background-color: transparent;
         border: none;
         font-size: 28px;
@@ -99,13 +102,14 @@ const InfoProdutoContainer = styled.div`
         margin-top: 0px;
         width: 60%;
         margin-left: 20px;
-    }
+      }
     }
   }
 `;
 
 function InfoProduto(props) {
   const [Qtd, setQtd] = useState(0);
+  console.log(props);
   return (
     <InfoProdutoContainer>
       <h3 className="company_sector">SNEAKER COMPANY</h3>
@@ -133,10 +137,14 @@ function InfoProduto(props) {
             +
           </button>
         </div>
-        <button className="buttonAddCart">Add to Cart</button>
+        <button className="buttonAddCart" onClick={() => props.addCart(Products['0001'],Qtd)}>
+          Add to Cart
+        </button>
       </div>
     </InfoProdutoContainer>
   );
 }
-
-export default InfoProduto;
+const mapStateToProps = (state) => ({ cart: state });
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({ addCart }, dispatch);
+export default connect(mapStateToProps, mapDispatchToProps)(InfoProduto);
