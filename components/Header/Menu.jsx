@@ -5,9 +5,9 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 const Menu_Style = styled.div`
   position: absolute;
   width: 60vw;
-  min-width: 200px;
+  min-width: 150px;
   top: 0;
-  z-index: 2;
+  z-index: 3;
   transition: 1s;
   left: ${(props) => (props.toggle ? "-60vw" : "0")};
   height: 100vh;

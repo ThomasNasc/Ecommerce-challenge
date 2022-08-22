@@ -67,15 +67,16 @@ const InfoProdutoContainer = styled.div`
       background-color: #fdede5;
       justify-content: space-between;
       border-radius: 10px;
-      height: 60px;
+      height: 50px;
       @media screen and (min-width: 700px) {
       flex-direction: row;
       width: 30%;
       min-width: 100px;
     }
       .buttonSetQtd {
-        width: 70px;
-        height: 60px;
+        width: 60px;
+        height: 50px;
+      
         background-color: transparent;
         border: none;
         font-size: 28px;
@@ -85,7 +86,7 @@ const InfoProdutoContainer = styled.div`
     }
     .buttonAddCart {
       margin-top: 20px;
-      height: 60px;
+      height: 50px;
       border-radius: 10px;
       border: none;
       background-color: #ff8426;
