@@ -39,7 +39,7 @@ function Thumbnail(props) {
   useEffect(() => props.CatchThumbRef(ThumbRef), []);
   return (
     <ThumbnailContainer actualImage={props.actualImage} ref={ThumbRef}>
-      {Products["0001"].Image_Product.map((item, index) => (
+      {Products[0].Image_Product.map((item, index) => (
         <img
           key={index}
           src={item}

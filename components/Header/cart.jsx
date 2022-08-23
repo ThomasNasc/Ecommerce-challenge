@@ -82,7 +82,7 @@ function Cart(props) {
       <div className="Item_Cart">
         <img
           className="product_img"
-          src={Products["0001"].Image_Product[0]}
+          src={Products[0].Image_Product[0]}
           alt=""
         />
         <div className="product_info">
