@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import Button_Qtd from "./Button_Qtd";
 
 const InfoProdutoContainer = styled.div`
   width: 100%;
   padding: 20px;
-  
+
   @media screen and (min-width: 700px) {
     width: 50%;
     padding: 50px;
@@ -69,14 +70,14 @@ const InfoProdutoContainer = styled.div`
       border-radius: 10px;
       height: 50px;
       @media screen and (min-width: 700px) {
-      flex-direction: row;
-      width: 30%;
-      min-width: 100px;
-    }
+        flex-direction: row;
+        width: 30%;
+        min-width: 100px;
+      }
       .buttonSetQtd {
         width: 60px;
         height: 50px;
-      
+
         background-color: transparent;
         border: none;
         font-size: 28px;
@@ -99,13 +100,12 @@ const InfoProdutoContainer = styled.div`
         margin-top: 0px;
         width: 60%;
         margin-left: 20px;
-    }
+      }
     }
   }
 `;
 
 function InfoProduto(props) {
-  const [Qtd, setQtd] = useState(0);
   return (
     <InfoProdutoContainer>
       <h3 className="company_sector">SNEAKER COMPANY</h3>
@@ -123,18 +123,7 @@ function InfoProduto(props) {
         <h4 className="product_original_value">$250.00</h4>
       </div>
 
-      <div className="container_buttons">
-        <div className="container_Qtd">
-          <button className="buttonSetQtd" onClick={() => setQtd(Qtd - 1)}>
-            -
-          </button>
-          <h3>{Qtd}</h3>
-          <button className="buttonSetQtd" onClick={() => setQtd(Qtd + 1)}>
-            +
-          </button>
-        </div>
-        <button className="buttonAddCart">Add to Cart</button>
-      </div>
+      <Button_Qtd />
     </InfoProdutoContainer>
   );
 }
