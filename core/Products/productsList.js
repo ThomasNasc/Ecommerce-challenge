@@ -1,5 +1,6 @@
 export const Products = [
   {
+    company: "SNEAKER COMPANY",
     id: 0,
     Image_Product: [
       "/image-product-1.jpg",
@@ -11,6 +12,8 @@ export const Products = [
     Description:
       "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut quae    suscipit facere corporis consequatur ullam alias praesentium pariatur    perspiciatis adipi rspiciatis adipi rspiciatis adipi",
     discont: 50,
-    value: 250,
+    value: 125,
+    original_value: 250,
   },
+
 ];

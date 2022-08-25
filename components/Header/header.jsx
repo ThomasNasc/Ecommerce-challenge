@@ -86,7 +86,7 @@ function Header(props) {
           <img className="Avatar-Img" src="/image-avatar.png" alt="" />
         </a>
       </div>
-      {toggleCart ? <Cart /> : ""}
+      {toggleCart ? <Cart  /> : ""}
     </Cabecalho>
   );
 }
