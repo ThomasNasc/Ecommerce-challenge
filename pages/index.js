@@ -1,7 +1,8 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import Header from "../components/Header/header";
 import InfoProduto from "../components/InfoProduto/InfoProduto";
-import DarkShowSlide from "../components/SlideFotosProduto/DarkShowSlide";
+
 import ImagesStructure from "../components/SlideFotosProduto/ImagesStructure";
 
 const EcommerceDisplay = styled.div`
@@ -15,12 +16,13 @@ const EcommerceDisplay = styled.div`
     flex-direction: column;
     align-items: center;
     @media screen and (min-width: 700px) {
-     flex-direction: row;
+      flex-direction: row;
     }
   }
 `;
 
 export default function Home() {
+
   return (
     <EcommerceDisplay>
       <Header />

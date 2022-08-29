@@ -3,24 +3,25 @@ import styled from "styled-components";
 import { Products } from "../../core/Products/productsList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
+import { addCart } from "../../core/redux/actions/cartAction";
+import { connect } from "react-redux";
 const Cart_Container = styled.div`
   width: 98vw;
   position: absolute;
   right: 50%;
   transform: translateX(50%);
-  z-index:2;
+  z-index: 2;
   top: 104%;
   border-radius: 10px;
   min-height: 200px;
   background-color: white;
   padding: 16px;
-  box-shadow: 0px 10px 20px  #afaeae;
-@media screen  and (min-width:700px){
+  box-shadow: 0px 10px 20px #afaeae;
+  @media screen and (min-width: 700px) {
     width: 350px;
     right: 10px;
     transform: translateX(0);
-
-}
+  }
   .cart_Tittle {
     width: 100%;
     margin-bottom: 25px;
@@ -40,8 +41,8 @@ const Cart_Container = styled.div`
       border-radius: 10px;
       margin-right: 20px;
     }
-    .trash_icon{
-        padding: 15px;
+    .trash_icon {
+      padding: 15px;
     }
     .product_info {
       width: 50%;
@@ -65,7 +66,7 @@ const Cart_Container = styled.div`
       }
     }
   }
-  .checkout_button{
+  .checkout_button {
     width: 100%;
     height: 45px;
     border: none;
@@ -76,29 +77,58 @@ const Cart_Container = styled.div`
   }
 `;
 function Cart(props) {
+  console.log(props);
+
   return (
     <Cart_Container>
       <h2 className="cart_Tittle">Cart</h2>
-      <div className="Item_Cart">
-        <img
-          className="product_img"
-          src={Products["0001"].Image_Product[0]}
-          alt=""
-        />
-        <div className="product_info">
-          <h4 className="product_name">Fall Limite Edition Sneakers</h4>
-          <div className="qtd_value_total">
-            <h4 className="qtdxvalue">$125 x 3</h4>
-            <h4 className="total">$375</h4>
+
+      {props.cart.map((item, index) => (
+        <div key={index} className="Item_Cart">
+          <img
+            className="product_img"
+            src={props.products_list[item.idProduct].image[0]}
+            alt=""
+          />
+          <div className="product_info">
+            <h4 className="product_name">
+              {props.products_list[item.idProduct].title}
+            </h4>
+            <div className="qtd_value_total">
+              <h4 className="qtdxvalue">
+                {props.products_list[item.idProduct].price.toLocaleString(
+                  "en-US",
+                  {
+                    currency: "USD",
+                    style: "currency",
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  }
+                )}{" "}
+                x {item.qtd}
+              </h4>
+              <h4 className="total">
+                {item.price.toLocaleString("en-US", {
+                  currency: "USD",
+                  style: "currency",
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
+              </h4>
+            </div>
           </div>
+          <a className="trash_icon">
+            <FontAwesomeIcon icon={faTrashCan} />
+          </a>
         </div>
-        <a className="trash_icon" >
-          <FontAwesomeIcon icon={faTrashCan} />
-        </a>
-      </div>
+      ))}
+
       <button className="checkout_button">Checkout</button>
     </Cart_Container>
   );
 }
-
-export default Cart;
+const mapStateToProps = (state) => ({
+  cart: state.Cart.cart,
+  products_list: state.products_list,
+});
+export default connect(mapStateToProps, null)(Cart);

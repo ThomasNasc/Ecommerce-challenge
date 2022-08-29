@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { bindActionCreators } from "@reduxjs/toolkit";
+
+import Button_Qtd from "./Button_Qtd";
 import { connect } from "react-redux";
-import { addCart } from "../../core/redux/actions/cartAction";
-import { Products } from "../../core/Products/productsList";
+
 const InfoProdutoContainer = styled.div`
   width: 100%;
   padding: 20px;
@@ -106,45 +106,46 @@ const InfoProdutoContainer = styled.div`
     }
   }
 `;
-
+// lembrar de criar variavel de produto selecionado e substituir o 0
 function InfoProduto(props) {
-  const [Qtd, setQtd] = useState(0);
-  console.log(props);
+
+  const ProductsInfo = props.products_list;
+
   return (
     <InfoProdutoContainer>
-      <h3 className="company_sector">SNEAKER COMPANY</h3>
-      <h1 className="product_name">Fall Limited Edition Sneakers</h1>
-      <p className="product_description">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut quae
-        suscipit facere corporis consequatur ullam alias praesentium pariatur
-        perspiciatis adipi rspiciatis adipi rspiciatis adipi
-      </p>
+      <h3 className="company_sector">{ProductsInfo[0].category}</h3>
+      <h1 className="product_name">{ProductsInfo[0].title}</h1>
+      <p className="product_description">{ProductsInfo[0].description}</p>
       <div className="container_values">
         <div className="container_value_discont">
-          <h2 className="product_value">$125.00</h2>
-          <h3 className="product_discont">50%</h3>
+          <h2 className="product_value">
+            {ProductsInfo[0].price.toLocaleString("en-US", {
+              currency: "USD",
+              style: "currency",
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
+          </h2>
+          <h3 className="product_discont">{ProductsInfo[0].discont}%</h3>
         </div>
-        <h4 className="product_original_value">$250.00</h4>
+        <h4 className="product_original_value">
+          {ProductsInfo[0].original_value.toLocaleString("en-US", {
+            currency: "USD",
+            style: "currency",
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })}
+        </h4>
       </div>
 
-      <div className="container_buttons">
-        <div className="container_Qtd">
-          <button className="buttonSetQtd" onClick={() => setQtd(Qtd - 1)}>
-            -
-          </button>
-          <h3>{Qtd}</h3>
-          <button className="buttonSetQtd" onClick={() => setQtd(Qtd + 1)}>
-            +
-          </button>
-        </div>
-        <button className="buttonAddCart" onClick={() => props.addCart(Products['0001'],Qtd)}>
-          Add to Cart
-        </button>
-      </div>
+
+      <Button_Qtd />
     </InfoProdutoContainer>
   );
 }
-const mapStateToProps = (state) => ({ cart: state });
-const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ addCart }, dispatch);
-export default connect(mapStateToProps, mapDispatchToProps)(InfoProduto);
+const mapStateToProps = (state) => ({
+  products_list: state.products_list,
+});
+
+export default connect(mapStateToProps)(InfoProduto);
+

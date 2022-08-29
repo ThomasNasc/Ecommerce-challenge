@@ -41,28 +41,33 @@ function ProductPhotos(props) {
   const [Thumbref, setThumbRerf] = useState("");
   function CatchThumbRef(ref) {
     setThumbRerf(ref);
-    console.log(ref.current.offsetWidth);
   }
-  console.log(Products["0001"].value_with_discont);
+
   return (
     <SlideProductPhotos>
       <div>
         <img
           className="ImagemPrincipal"
-          src={Products["0001"].Image_Product[actualImage]}
+          src={Products[0].image[actualImage]}
           alt=""
         />
         <button
           onClick={() => {
             actualImage === 0
               ? [
-                  setActualImage(Products["0001"].Image_Product.length - 1),
-                  Thumbref.current.scrollTo(Thumbref.current.offsetWidth + 1000, 0),
+                  setActualImage(Products[0].image.length - 1),
+                  Thumbref.current.scrollTo(
+                    Thumbref.current.offsetWidth + 1000,
+                    0
+                  ),
                 ]
-              : [setActualImage(actualImage - 1), Thumbref.current.scrollBy(
-                 -(Thumbref.current.offsetWidth / 100) * 25,
-                0
-              ),];
+              : [
+                  setActualImage(actualImage - 1),
+                  Thumbref.current.scrollBy(
+                    -(Thumbref.current.offsetWidth / 100) * 25,
+                    0
+                  ),
+                ];
           }}
           className="botao voltar"
         >
@@ -70,7 +75,7 @@ function ProductPhotos(props) {
         </button>
         <button
           onClick={() => {
-            actualImage === Products["0001"].Image_Product.length - 1
+            actualImage === Products[0].image.length - 1
               ? [setActualImage(0), Thumbref.current.scrollTo(0, 0)]
               : [
                   setActualImage(actualImage + 1),
