@@ -25,7 +25,7 @@ function Button_Qtd(props) {
           props.addCart(
             props.products_list[0].id,
             Qtd,
-            props.cart, props.products_list[0].value
+            props.cart, props.products_list[0].price
           )
         }
       >

@@ -48,14 +48,14 @@ function ProductPhotos(props) {
       <div>
         <img
           className="ImagemPrincipal"
-          src={Products[0].Image_Product[actualImage]}
+          src={Products[0].image[actualImage]}
           alt=""
         />
         <button
           onClick={() => {
             actualImage === 0
               ? [
-                  setActualImage(Products[0].Image_Product.length - 1),
+                  setActualImage(Products[0].image.length - 1),
                   Thumbref.current.scrollTo(
                     Thumbref.current.offsetWidth + 1000,
                     0
@@ -75,7 +75,7 @@ function ProductPhotos(props) {
         </button>
         <button
           onClick={() => {
-            actualImage === Products[0].Image_Product.length - 1
+            actualImage === Products[0].image.length - 1
               ? [setActualImage(0), Thumbref.current.scrollTo(0, 0)]
               : [
                   setActualImage(actualImage + 1),

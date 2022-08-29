@@ -1,11 +1,13 @@
-export function addCart(IdItem, qtd, cart, value) {
+import axios from "axios";
+
+export function addCart(IdItem, qtd, cart, price) {
   const itemParaSerAlterado = cart.find((item) => item.idProduct === IdItem);
   const qtdAtualizada =
     itemParaSerAlterado === undefined ? qtd : itemParaSerAlterado.qtd + qtd;
   const item_qtd_value = {
     idProduct: IdItem,
     qtd: qtdAtualizada,
-    value: qtdAtualizada * value,
+    price: qtdAtualizada * price,
   };
 
   if (itemParaSerAlterado === undefined) {

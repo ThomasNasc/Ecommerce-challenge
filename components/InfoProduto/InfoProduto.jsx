@@ -109,13 +109,13 @@ function InfoProduto(props) {
   const ProductsInfo = props.products_list;
   return (
     <InfoProdutoContainer>
-      <h3 className="company_sector">{ProductsInfo[0].company}</h3>
-      <h1 className="product_name">{ProductsInfo[0].Name_Product}</h1>
-      <p className="product_description">{ProductsInfo[0].Description}</p>
+      <h3 className="company_sector">{ProductsInfo[0].category}</h3>
+      <h1 className="product_name">{ProductsInfo[0].title}</h1>
+      <p className="product_description">{ProductsInfo[0].description}</p>
       <div className="container_values">
         <div className="container_value_discont">
           <h2 className="product_value">
-            {ProductsInfo[0].value.toLocaleString("en-US", {
+            {ProductsInfo[0].price.toLocaleString("en-US", {
               currency: "USD",
               style: "currency",
               minimumFractionDigits: 2,

@@ -87,16 +87,16 @@ function Cart(props) {
         <div key={index} className="Item_Cart">
           <img
             className="product_img"
-            src={props.products_list[item.idProduct].Image_Product[0]}
+            src={props.products_list[item.idProduct].image[0]}
             alt=""
           />
           <div className="product_info">
             <h4 className="product_name">
-              {props.products_list[item.idProduct].Name_Product}
+              {props.products_list[item.idProduct].title}
             </h4>
             <div className="qtd_value_total">
               <h4 className="qtdxvalue">
-                {props.products_list[item.idProduct].value.toLocaleString(
+                {props.products_list[item.idProduct].price.toLocaleString(
                   "en-US",
                   {
                     currency: "USD",
@@ -108,12 +108,12 @@ function Cart(props) {
                 x {item.qtd}
               </h4>
               <h4 className="total">
-                {item.value.toLocaleString("en-US", {
+                {item.price.toLocaleString("en-US", {
                   currency: "USD",
                   style: "currency",
                   minimumFractionDigits: 2,
                   maximumFractionDigits: 2,
-                })}{" "}
+                })}
               </h4>
             </div>
           </div>

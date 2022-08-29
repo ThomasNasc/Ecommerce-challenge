@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import Header from "../components/Header/header";
 import InfoProduto from "../components/InfoProduto/InfoProduto";
@@ -21,6 +22,7 @@ const EcommerceDisplay = styled.div`
 `;
 
 export default function Home() {
+
   return (
     <EcommerceDisplay>
       <Header />
