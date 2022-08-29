@@ -30,6 +30,7 @@ const Cabecalho = styled.div`
     margin-bottom: 7px;
     @media screen and (min-width: 700px) {
       margin-right: 30px;
+      margin-left: 30px;
     }
   }
 
@@ -70,23 +71,29 @@ const Cabecalho = styled.div`
 function Header(props) {
   const [toggleMenu, useToggleMenu] = useState(true);
   const [toggleCart, useToggleCart] = useState(false);
+  function OpenCloseMenu() {
+    useToggleMenu(!toggleMenu);
+  }
+  function OpenCloseCart() {
+    useToggleCart(!toggleCart);
+  }
 
   return (
     <Cabecalho>
-      <a onClick={() => useToggleMenu(!toggleMenu)}>
+      <a onClick={() => OpenCloseMenu()}>
         <FontAwesomeIcon className="Link-icon" icon={faBars} />
       </a>
       <img className="Logo" src="/logo.svg" alt="" />
       <Menu toggle={toggleMenu} changeToggle={useToggleMenu} />
       <div className="Cart-Avatar-Container">
-        <a onClick={() => useToggleCart(!toggleCart)}>
+        <a onClick={() => OpenCloseCart()}>
           <FontAwesomeIcon className="Link-Cart" icon={faCartShopping} />
         </a>
         <a href="" className="Link-Img-Avatar">
           <img className="Avatar-Img" src="/image-avatar.png" alt="" />
         </a>
       </div>
-      {toggleCart ? <Cart  /> : ""}
+      {toggleCart ? <Cart /> : ""}
     </Cabecalho>
   );
 }

@@ -36,18 +36,20 @@ const ThumbnailContainer = styled.div`
 
 function Thumbnail(props) {
   const ThumbRef = useRef();
-  useEffect(() => props.CatchThumbRef(ThumbRef), []);
+  const passarRefThumb = () => props.CatchThumbRef(ThumbRef);
+  useEffect(() => passarRefThumb());
   return (
     <ThumbnailContainer actualImage={props.actualImage} ref={ThumbRef}>
       {Products[0].image.map((item, index) => (
         <img
+          alt={index}
           key={index}
           src={item}
           className={props.actualImage === index ? "ActiveImage" : ""}
           onClick={(e) => {
             props.setDarkShow ? props.setDarkShow(true) : "";
             props.setActualImage(index);
-            props.actualImage === index? e.target.scrollIntoView():''
+            props.actualImage === index ? e.target.scrollIntoView() : "";
           }}
         />
       ))}
